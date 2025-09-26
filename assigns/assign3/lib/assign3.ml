@@ -172,32 +172,3 @@ let eval_urm (prog : int list list) (rs : registers) : registers =
   in
 
   next 0 rs
-
-(* Challenge problem: make this work for negative inputs *)
-let max_urm (i : int) (j : int) : int =
-  interp_urm
-    "
-    T 0 2
-    Z 0
-    J 1 3 100
-    I 0
-    I 3
-    J 0 0 2
-    "
-    [i; j]
-
-let fibonacci_urm (i : int) : int =
-  interp_urm
-    "
-    I 2
-    J 0 5 11
-      T 2 3
-      J 1 4 7
-        I 2 I 4
-        J 0 0 3
-      T 3 1
-      Z 4 I 5
-      J 0 0 1
-    T 1 0
-    "
-    [i]
