@@ -81,7 +81,7 @@ let zero (rs : registers) (i : int) : registers =
     | [] -> List.rev found  (*returns the generated list.*)
     | (j, v) :: tail ->
         if j = i then
-          List.rev found @ tail    (* skips the value *)
+          rev_append (List.rev found) tail    (* skips the value *)
         else
           aux ((j, v) :: found) tail
   in
