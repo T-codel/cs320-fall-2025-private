@@ -173,6 +173,14 @@ let eval_urm (prog : int list list) (rs : registers) : registers =
 
   next 0 rs
 
+let interp_urm (prog : string) (args : int list) : int =
+  prog
+  |> sep_on_whitespace
+  |> parse_urm
+  |> fun prog -> eval_urm prog (load args)
+  |> fun rs -> lookup rs 0
+
+
 (* Challenge problem: make this work for negative inputs *)
 let max_urm (i : int) (j : int) : int =
   interp_urm
